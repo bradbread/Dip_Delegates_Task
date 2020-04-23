@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Runtime.CompilerServices;
 
 namespace FileParser {
     public class FileHandler {
@@ -16,8 +16,14 @@ namespace FileParser {
         /// <returns></returns>
         public List<string> ReadFile(string filePath) {
             List<string> lines = new List<string>();
-
-            return lines; //-- return result here
+            using (var reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    lines.Add(reader.ReadLine());
+                }
+            }
+                return lines; //-- return result here
         }
 
         
@@ -40,6 +46,26 @@ namespace FileParser {
         /// <returns></returns>
         public List<List<string>> ParseData(List<string> data, char delimiter) {
             List<List<string>> result = new List<List<string>>();
+            int max = data.Count;
+            for (int i = 0; i < max; i++)
+            {
+                //create a new list to store our seperated values
+                result.Add(new List<string>());
+
+                /* first idea probably no point making it a list
+                List<string> seperated = new List<string>();
+                seperated.AddRange(data[i].Split(delimiter));
+                */
+
+                //turn an entry in the list into a seperate array
+                string[] seperated = data[i].Split(delimiter);
+
+                //add our seperate array into our list within a list
+                foreach(string word in seperated)
+                {
+                    result[i].Add(word);
+                }
+            }
 
             return result; //-- return result here
         }
@@ -51,7 +77,7 @@ namespace FileParser {
         /// <returns></returns>
         public List<List<string>> ParseCsv(List<string> data) {
             
-            return new List<List<string>>();  //-- return result here
+            return new List<List<string>>(ParseData(data, ','));  //-- return result here
         }
     }
 }

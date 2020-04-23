@@ -10,8 +10,8 @@ namespace FileParserTests
 
         private FileHandler _fh;
         private DataParser _dp;
-        private string _csvPath = Environment.GetEnvironmentVariable("HOME") + "/TempFiles/data.csv";  // change to appropriate path
-        private string _tsvPath = Environment.GetEnvironmentVariable("HOME") + "/TempFiles/data.tsv";  // change to appropriate path
+        private string _csvPath = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/data.csv";  // change to appropriate path
+        private string _tsvPath = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/data.tsv";  // change to appropriate path
 
         private string _writeFile = Environment.GetEnvironmentVariable("HOME") + "/TempFiles/dataWrite.txt";  // change to appropriate path
        
@@ -64,6 +64,7 @@ namespace FileParserTests
             Assert.Equal(1001, data.Count);
             Assert.Equal("YLU-423", data[735][0]);
             Assert.Equal("Elise", data[918][2]);
+
         }
         
         [Fact]
