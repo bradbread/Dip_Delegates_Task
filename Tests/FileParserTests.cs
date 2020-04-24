@@ -13,7 +13,7 @@ namespace FileParserTests
         private string _csvPath = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/data.csv";  // change to appropriate path
         private string _tsvPath = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/data.tsv";  // change to appropriate path
 
-        private string _writeFile = Environment.GetEnvironmentVariable("HOME") + "/TempFiles/dataWrite.txt";  // change to appropriate path
+        private string _writeFile = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/dataWrite.txt";  // change to appropriate path
        
         private List<List<string>> _data;
 

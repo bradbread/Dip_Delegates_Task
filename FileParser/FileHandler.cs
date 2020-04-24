@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace FileParser {
     public class FileHandler {
@@ -34,8 +35,32 @@ namespace FileParser {
         /// <param name="delimeter"></param>
         /// <param name="rows"></param>
         public void WriteFile(string filePath, char delimeter, List<List<string>> rows) {
+            //string builder is apparently more performant than a regular string when constantly modifying
+            //will build a large string with the data formatted then write all at once to a file at the end
+            var csv = new StringBuilder();
+            int max = rows.Count;
+            for (int i = 0; i < max; i++)
+            {
+                int innerMax = rows[i].Count;
+                //ignore the last element we will handle it outside of the loop
+                for (int a = 0; a < innerMax - 1; a++)
+                {
+                    csv.Append(rows[i][a] + delimeter);
+                }
+                //probably better just to do this one check here other idea was a check inside the inner loop
+                //so we don't add the delimeter to the end of the last element and to finish the line
+                if (innerMax > 0)
+                {
+                    csv.AppendLine(rows[i][innerMax - 1]);
+                }
+                else
+                {
+                    csv.AppendLine();
+                }
 
-            
+            }
+
+            File.WriteAllText(filePath, csv.ToString());
         }
         
         /// <summary>
