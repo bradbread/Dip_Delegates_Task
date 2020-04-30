@@ -13,7 +13,7 @@ namespace PersonHandlerTests
         private FileHandler _fh;
         private DataParser _dp;
 
-        private string csvPath = Environment.GetEnvironmentVariable("HOME") + "/TempFiles/processed_data.csv"; // change to appropriate path
+        private string csvPath = Environment.GetEnvironmentVariable("HOME") + "/Users/Bradley/Desktop/swinburne/diplo/ICT418/Delegates_Task/processed_data.csv"; // change to appropriate path
         private List<List<string>> data;
 
         public PersonHandlerTests() {
